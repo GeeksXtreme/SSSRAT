@@ -6,7 +6,6 @@ using System.Windows.Forms;
 namespace Public {
 	public class _ {
 		public const string PROGRAM_NAME = "SSSRAT";
-		public const string VERSION = "v0.3.1";
 		public const int MAX_BUFFER = 8192;
 		public const string SPLITTER = "{_$}";
 		public static int port = 13337;
@@ -33,8 +32,6 @@ namespace Public {
 			}
 		}
 	}
-
-
 
 	public struct Client {
 		public readonly uint id;

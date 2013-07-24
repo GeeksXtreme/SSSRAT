@@ -6,5 +6,5 @@ C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\bin\Debug\SSSRA
 C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\bin\Debug\SSSRAT GUI.pdb
 C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRAT GUI.exe
 C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRAT GUI.pdb
-C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRAT_GUI.frm_cmd.resources
 C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRAT_GUI.FrmMain.resources
+C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRAT_GUI.FrmCMD.resources
