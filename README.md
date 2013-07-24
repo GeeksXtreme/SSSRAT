@@ -1,11 +1,11 @@
-# SSSRAT
+SSSRAT
 ======
 
-# SSSR Remote Administration Tool
+SSSR Remote Administration Tool
 
 ======
 
-## A simple and (supposed to be) stable remote administration tool.
+#### A simple and (supposed to be) stable remote administration tool.
 
 It can:
 - [ ] To send remote commands (like CMD)
