@@ -74,8 +74,8 @@ namespace SSSRAT_GUI {
 					return;
 				}
 			}
-			var item = new ListViewItem("ID: " + idIncrement + ", IP: " + client.Client.RemoteEndPoint);
-			var cl = new Client(++idIncrement, client, new Thread(KeepAlive), item);
+			var item = new ListViewItem("ID: " + ++idIncrement + ", IP: " + client.Client.RemoteEndPoint);
+			var cl = new Client(idIncrement, client, new Thread(KeepAlive), item);
 			cl.ka.Start(cl);
 			_.clients.Add(cl);
 			Invoke(new MethodInvoker(() => list_clients.Items.Add(item)));
@@ -94,6 +94,7 @@ namespace SSSRAT_GUI {
 			string text = item.Text;
 			for (int x = 0; x < _.clients.Count; x++) {
 				if (text == "ID: " + _.clients[x].id + ", IP: " + _.clients[x].tcp.Client.RemoteEndPoint) {
+					
 					return _.clients[x];
 				}
 			}
@@ -216,8 +217,8 @@ namespace SSSRAT_GUI {
 		}
 
 		private void CMDToolStripMenuItemClick(object sender, EventArgs e) {
-			var cmd = new FrmCMD();
-			cmd.Init();
+			/*var cmd = new FrmCMD();
+			cmd.Init()*/
 		}
 		#endregion
 	}
