@@ -1,0 +1,6 @@
+C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\SSSRAT\bin\Debug\SSSRAT.exe.config
+C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\SSSRAT\bin\Debug\SSSRAT.exe
+C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\SSSRAT\bin\Debug\SSSRAT.pdb
+C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\SSSRAT\obj\Debug\SSSRAT.csprojResolveAssemblyReference.cache
+C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\SSSRAT\obj\Debug\SSSRAT.exe
+C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\SSSRAT\obj\Debug\SSSRAT.pdb

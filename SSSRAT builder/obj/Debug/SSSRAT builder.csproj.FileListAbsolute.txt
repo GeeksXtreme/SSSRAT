@@ -1,0 +1,8 @@
+c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\bin\Debug\SSSRAT builder.exe.config
+c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\bin\Debug\SSSRAT builder.exe
+c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\bin\Debug\SSSRAT builder.pdb
+c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\SSSRAT_builder.Properties.Resources.resources
+c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\SSSRAT builder.csproj.GenerateResource.Cache
+c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\SSSRAT builder.exe
+c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\SSSRAT builder.pdb
+C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\SSSRAT_builder.frm_build.resources
