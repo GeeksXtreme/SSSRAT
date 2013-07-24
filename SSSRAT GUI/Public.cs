@@ -31,6 +31,16 @@ namespace Public {
 				return null;
 			}
 		}
+
+		public static string CleanOs(string Str) {
+			return Str.Replace("\0", "");
+		}
+		public static string GS(byte[] bytes) {
+			return System.Text.Encoding.ASCII.GetString(bytes);
+		}
+		public static byte[] GB(string str) {
+			return System.Text.Encoding.ASCII.GetBytes(str);
+		}
 	}
 
 	public struct Client {

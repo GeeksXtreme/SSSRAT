@@ -1,0 +1,1 @@
+##### - [ ] SSSRAT server deadlocks when master is disconnected. Uses whole CPU core.

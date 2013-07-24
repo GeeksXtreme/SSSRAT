@@ -24,12 +24,12 @@ namespace SSSRAT_GUI {
 				var readBuff = new byte[2];
 				try {
 					var stm = client.tcp.GetStream();
-					_.Send(stm, GB("COM" + _.SPLITTER + "KA"));
+					_.Send(stm, _.GB("COM" + _.SPLITTER + "KA"));
 					readBuff = _.Recv(stm, 2);
 				} catch {
 					RemoveClient(client);
 				}
-				if (GS(readBuff) != "ON") {
+				if (_.GS(readBuff) != "ON") {
 					RemoveClient(client);
 				}
 				ToLog("KA done for " + client.id);
@@ -54,15 +54,15 @@ namespace SSSRAT_GUI {
 		void ListenHandle(object Client) {
 			var client = (TcpClient)Client;
 			var stm = client.GetStream();
-			_.Send(stm, GB("READY"));
+			_.Send(stm, _.GB("READY"));
 			byte[] readBuff = _.Recv(stm, _.MAX_BUFFER);
-			if (CleanOs(GS(readBuff)) != t_auth.Text) {
+			if (_.CleanOs(_.GS(readBuff)) != t_auth.Text) {
 				string ip = client.Client.RemoteEndPoint.ToString();
 				client.Close();
-				ToLog("AUTH failed for " + ip + " GOT " + CleanOs(GS(readBuff)) + " EXPECTED " + t_auth.Text);
+				ToLog("AUTH failed for " + ip + " GOT " + _.CleanOs(_.GS(readBuff)) + " EXPECTED " + t_auth.Text);
 				return;
 			}
-			_.Send(stm, GB("S"));
+			_.Send(stm, _.GB("S"));
 			AddClient(client);
 		}
 		#endregion
@@ -126,15 +126,7 @@ namespace SSSRAT_GUI {
 			}
 		}
 
-		public static string CleanOs(string Str) {
-			return Str.Replace("\0", "");
-		}
-		static string GS(byte[] bytes) {
-			return System.Text.Encoding.ASCII.GetString(bytes);
-		}
-		static byte[] GB(string str) {
-			return System.Text.Encoding.ASCII.GetBytes(str);
-		}
+
 		#endregion
 
 		#region Forms
