@@ -10,7 +10,7 @@ namespace SSSRAT_GUI {
 			InitializeComponent();
 		}
 
-		public static Client client = new Client(UInt32.MaxValue, new TcpClient(), new Thread(() => {}), new ListViewItem());
+		public static Client client = new Client(UInt32.MaxValue, new TcpClient(), new ListViewItem());
 
 		public void Init(Client Client) {
 			client = Client;
@@ -26,6 +26,9 @@ namespace SSSRAT_GUI {
 				                MessageBoxIcon.Error);
 				Environment.Exit(0);
 			}
+			t_main.Text += "SSSR Remote Administration Tool [Version " + _.CurrentVersion + "]\r\n" +
+						   "Copyup (T) 2013 TETYYS Incorporated. Most rights reservated\r\n\r\n";
+			t_main.SelectionStart = t_main.Text.Length;
 		}
 
 		private void TCMDKeyUp(object sender, KeyEventArgs e) {

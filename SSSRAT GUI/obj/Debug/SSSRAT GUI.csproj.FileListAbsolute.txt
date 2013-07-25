@@ -8,13 +8,12 @@ C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRA
 C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRAT GUI.pdb
 C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRAT_GUI.FrmMain.resources
 C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT GUI\obj\Debug\SSSRAT_GUI.FrmCMD.resources
-C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\bin\Debug\SSSRAT GUI.exe.config
-C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT GUI.exe
-C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT GUI.pdb
 C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\bin\Debug\SSSRAT GUI.exe
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\bin\Debug\SSSRAT GUI.exe.config
 C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\bin\Debug\SSSRAT GUI.pdb
-C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT GUI.csprojResolveAssemblyReference.cache
 C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT_GUI.FrmCMD.resources
 C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT_GUI.FrmMain.resources
 C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT_GUI.Properties.Resources.resources
 C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT GUI.csproj.GenerateResource.Cache
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT GUI.exe
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT GUI\obj\Debug\SSSRAT GUI.pdb

