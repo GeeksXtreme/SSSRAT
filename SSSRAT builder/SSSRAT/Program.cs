@@ -104,6 +104,7 @@ namespace SSSRAT {
 					var stdout = new StringBuilder();
 					proc.OutputDataReceived += (sender, e) => stdout.Append(e.Data);
 					proc.StartInfo = procStartInfo;
+					proc.Start();
 					proc.BeginOutputReadLine();
 					proc.WaitForExit();
 					proc.CancelOutputRead();

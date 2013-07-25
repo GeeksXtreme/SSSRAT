@@ -6,3 +6,12 @@ c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\S
 c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\SSSRAT builder.exe
 c:\users\damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\SSSRAT builder.pdb
 C:\Users\Damkus\Documents\Visual Studio 2012\Projects\SSSRAT builder\obj\Debug\SSSRAT_builder.frm_build.resources
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\bin\Debug\SSSRAT builder.exe.config
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\bin\Debug\SSSRAT builder.exe
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\bin\Debug\SSSRAT builder.pdb
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\obj\Debug\SSSRAT builder.csprojResolveAssemblyReference.cache
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\obj\Debug\SSSRAT_builder.frm_build.resources
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\obj\Debug\SSSRAT_builder.Properties.Resources.resources
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\obj\Debug\SSSRAT builder.csproj.GenerateResource.Cache
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\obj\Debug\SSSRAT builder.exe
+C:\Users\Damkus\Documents\GitHub\SSSRAT\SSSRAT builder\obj\Debug\SSSRAT builder.pdb
