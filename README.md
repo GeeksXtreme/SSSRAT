@@ -11,6 +11,7 @@ It can:
 - [X] To send remote commands (like CMD)
 - [ ] Remote upload and execute file
 - [ ] View remote client computer information
+
 for now.
 
 ------
